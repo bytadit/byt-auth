@@ -81,6 +81,17 @@
                     {{ __('Log in') }}
                 </x-jet-button>
             </div>
+
+            <div class="flex items-center justify-center mt-4">
+
+                <a href="/auth/google" class="px-4 py-2 bg-primary border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-500">
+                    Login  Google
+                </a>
+                <br>
+                <a href="/auth/github" class="px-4 py-2 bg-dark border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-500">
+                    Login  GitHub
+                </a>
+            </div>
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>
