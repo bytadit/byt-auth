@@ -4,11 +4,11 @@
             <x-jet-authentication-card-logo />
         </x-slot>
 
-        {{-- <x-jet-validation-errors class="mb-4" /> --}}
+        <x-jet-validation-errors class="mb-4" />
 
-        @if(Session::has('error'))
+        {{-- @if(Session::has('error'))
         <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('error') }}</p>
-        @endif
+        @endif --}}
 
         <form method="POST" action="{{ route('register') }}" id="registerForm">
             @csrf
@@ -113,12 +113,12 @@
             @endif
 
                      <!-- Google reCaptcha v2 -->
-            {!! htmlFormSnippet() !!}
+            {{-- {!! htmlFormSnippet() !!}
             @if($errors->has('g-recaptcha-response'))
             <div>
                 <small class="text-danger">{{ $errors->first('g-recaptcha-response') }}</small>
             </div>
-            @endif
+            @endif --}}
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">

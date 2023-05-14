@@ -77,9 +77,12 @@
                     </a>
                 @endif
 
-                <x-jet-button class="ml-4">
+                {{-- <x-jet-button class="ml-4">
                     {{ __('Log in') }}
-                </x-jet-button>
+                </x-jet-button> --}}
+                <div class="ml-4">
+                    <input type="submit" class="px-4 py-2 bg-dark border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-500" value="Login">
+                </div>
             </div>
 
             <div class="flex items-center justify-center mt-4">
