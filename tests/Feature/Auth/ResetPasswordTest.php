@@ -11,8 +11,9 @@ use Tests\TestCase;
 
 class ResetPasswordTest extends TestCase
 {
-    use RefreshDatabase;
+    // use RefreshDatabase;
     public function test_reset_password_link_screen_can_be_rendered()
+    // RES-01
     {
         if (! Features::enabled(Features::resetPasswords())) {
             return $this->markTestSkipped('Password updates are not enabled.');
@@ -20,8 +21,8 @@ class ResetPasswordTest extends TestCase
         $response = $this->get('/forgot-password');
         $response->assertStatus(200);
     }
-
     public function test_reset_password_link_can_be_requested()
+    // RES-02
     {
         if (! Features::enabled(Features::resetPasswords())) {
             return $this->markTestSkipped('Password updates are not enabled.');
@@ -33,8 +34,8 @@ class ResetPasswordTest extends TestCase
         ]);
         Notification::assertSentTo($user, ResetPassword::class);
     }
-
     public function test_reset_password_screen_can_be_rendered()
+    // RES-03
     {
         if (! Features::enabled(Features::resetPasswords())) {
             return $this->markTestSkipped('Password updates are not enabled.');
@@ -50,8 +51,8 @@ class ResetPasswordTest extends TestCase
             return true;
         });
     }
-
     public function test_password_can_be_reset_with_valid_token()
+    // RES-04
     {
         if (! Features::enabled(Features::resetPasswords())) {
             return $this->markTestSkipped('Password updates are not enabled.');

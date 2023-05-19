@@ -63,7 +63,7 @@ class FortifyServiceProvider extends ServiceProvider
         RateLimiter::for('login', function (Request $request) {
             $key = 'login.'.$request->ip();
             $max = 3;   // attempts
-            $decay = 30;    //seconds
+            $decay = 10;    //seconds
 
             if (RateLimiter::tooManyAttempts($key, $max)) {
                 $seconds = RateLimiter::availableIn($key);

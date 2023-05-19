@@ -20,6 +20,7 @@ class RegisterTest extends TestCase
     // use RefreshDatabase;
 
     public function test_valid_registration()
+    // REG-01
     {
         $name = rand(0, 1000);
         $response = $this->post('/register', [
@@ -31,7 +32,8 @@ class RegisterTest extends TestCase
         $this->assertAuthenticated();
         $response->assertRedirect('/dashboard');
     }
-    public function test_name_is_empty()
+    public function test_register_name_is_empty()
+    // REG-02
     {
         $name = rand(0, 1000);
         $response = $this->post('/register', [
@@ -43,7 +45,8 @@ class RegisterTest extends TestCase
         $response->assertStatus(302);
         $response->assertSessionHasErrors('name');
     }
-    public function test_email_is_empty()
+    public function test_register_email_is_empty()
+    // REG-03
     {
         $name = rand(0, 1000);
         $response = $this->post('/register', [
@@ -55,7 +58,8 @@ class RegisterTest extends TestCase
         $response->assertStatus(302);
         $response->assertSessionHasErrors('email');
     }
-    public function test_invalid_email_format()
+    public function test_register_invalid_email_format()
+    // REG-04
     {
         $name = rand(0, 1000);
         $response = $this->post('/register', [
@@ -67,7 +71,8 @@ class RegisterTest extends TestCase
         $response->assertStatus(302);
         $response->assertSessionHasErrors('email');
     }
-    public function test_email_has_been_used()
+    public function test_register_email_has_been_used()
+    // REG-05
     {
         $name = rand(0, 1000);
         $user = User::all()->random()->first();
@@ -80,7 +85,8 @@ class RegisterTest extends TestCase
         $response->assertStatus(302);
         $response->assertSessionHasErrors('email');
     }
-    public function test_password_confirm_not_match()
+    public function test_register_password_confirm_not_match()
+    // REG-06
     {
         $name = rand(0, 1000);
         $response = $this->post('/register', [
@@ -92,7 +98,8 @@ class RegisterTest extends TestCase
         $response->assertStatus(302);
         $response->assertSessionHasErrors('password');
     }
-    public function test_password_no_number()
+    public function test_register_password_has_no_number()
+    // REG-07
     {
         $name = rand(0, 1000);
         $response = $this->post('/register', [
@@ -104,7 +111,8 @@ class RegisterTest extends TestCase
         $response->assertStatus(302);
         $response->assertSessionHasErrors('password');
     }
-    public function test_password_no_special_char()
+    public function test_register_password_has_no_special_char()
+    // REG-08
     {
         $name = rand(0, 1000);
         $response = $this->post('/register', [
@@ -116,7 +124,8 @@ class RegisterTest extends TestCase
         $response->assertStatus(302);
         $response->assertSessionHasErrors('password');
     }
-    public function test_password_no_lowercase()
+    public function test_register_password_has_no_lowercase()
+    // REG-09
     {
         $name = rand(0, 1000);
         $response = $this->post('/register', [
@@ -128,7 +137,8 @@ class RegisterTest extends TestCase
         $response->assertStatus(302);
         $response->assertSessionHasErrors('password');
     }
-    public function test_password_no_uppercase()
+    public function test_register_password_has_no_uppercase()
+    // REG-10
     {
         $name = rand(0, 1000);
         $response = $this->post('/register', [
@@ -140,7 +150,8 @@ class RegisterTest extends TestCase
         $response->assertStatus(302);
         $response->assertSessionHasErrors('password');
     }
-    public function test_password_less_than_8_char()
+    public function test_register_password_has_less_than_8_char()
+    // REG-11
     {
         $name = rand(0, 1000);
         $response = $this->post('/register', [
@@ -152,7 +163,8 @@ class RegisterTest extends TestCase
         $response->assertStatus(302);
         $response->assertSessionHasErrors('password');
     }
-    public function test_password_contain_spaces()
+    public function test_register_password_contain_spaces()
+    // REG-12
     {
         $name = rand(0, 1000);
         $response = $this->post('/register', [
