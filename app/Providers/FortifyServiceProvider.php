@@ -62,7 +62,7 @@ class FortifyServiceProvider extends ServiceProvider
 
         RateLimiter::for('login', function (Request $request) {
             $key = 'login.'.$request->ip();
-            $max = 3;   // attempts
+            $max = 300000;   // attempts
             $decay = 10;    //seconds
 
             if (RateLimiter::tooManyAttempts($key, $max)) {
@@ -76,7 +76,10 @@ class FortifyServiceProvider extends ServiceProvider
 
 
         RateLimiter::for('two-factor', function (Request $request) {
-            return Limit::perMinute(5)->by($request->session()->get('login.id'));
+            return Limit::perMinute(30000)->by($request->session()->get('login.id'));
+        });
+        RateLimiter::for("login", function () {
+            Limit::perMinute(300000);
         });
     }
 }
